@@ -1,4 +1,4 @@
-// Regulamento da corrida (Art. 4º e 6º). Sem dependência do Angular.
+// Regulamento da corrida (Art. 4º e 6º).
 // Todas as datas chegam como texto 'aaaa-mm-dd' e são comparadas por partes,
 // sem passar por Date, para evitar deslocamento de fuso horário.
 
