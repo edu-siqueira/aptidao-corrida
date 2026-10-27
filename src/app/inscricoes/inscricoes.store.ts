@@ -95,6 +95,10 @@ export class InscricoesStore {
     return true;
   }
 
+  descartarAviso(): void {
+    this.avisoAtual.set(null);
+  }
+
   private carregar(): void {
     let conteudo: string | null;
     try {

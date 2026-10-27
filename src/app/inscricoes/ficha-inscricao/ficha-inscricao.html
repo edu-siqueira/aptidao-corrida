@@ -1,0 +1,22 @@
+<dl class="ficha">
+  <div>
+    <dt>E-mail</dt>
+    <dd>{{ inscricao().email }}</dd>
+  </div>
+  <div>
+    <dt>Nascimento</dt>
+    <dd>{{ inscricao().nascimento | dataBr }}</dd>
+  </div>
+  <div>
+    <dt>Idade na prova</dt>
+    <dd>{{ inscricao().idadeNaProva }} anos</dd>
+  </div>
+  <div>
+    <dt>Categoria</dt>
+    <dd>{{ rotuloCategoria[inscricao().categoria] }}</dd>
+  </div>
+  <div>
+    <dt>Percurso</dt>
+    <dd>{{ rotuloDistancia[inscricao().distancia] }}</dd>
+  </div>
+</dl>

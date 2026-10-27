@@ -1,0 +1,13 @@
+@if (inscricao(); as inscricao) {
+  <article class="card">
+    <h1>{{ inscricao.nomeCompleto }}</h1>
+    <app-ficha-inscricao [inscricao]="inscricao" />
+    <div class="acoes">
+      <a routerLink="/inscricoes">Voltar para a lista</a>
+      <a [routerLink]="['/inscricoes', inscricao.email, 'editar']">Editar</a>
+      <button type="button" (click)="cancelar()">Cancelar inscrição</button>
+    </div>
+  </article>
+} @else {
+  <app-inscricao-nao-encontrada [email]="email()" />
+}

@@ -1,12 +1,17 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+import { DataBrPipe } from './compartilhado/data-br.pipe';
+import { EVENTO } from './dominio/evento';
+import { InscricoesStore } from './inscricoes/inscricoes.store';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink, DataBrPipe],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('aptidao-corrida');
+  protected readonly store = inject(InscricoesStore);
+  protected readonly evento = EVENTO;
 }

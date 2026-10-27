@@ -15,6 +15,12 @@ export function isDataValida(texto: string): boolean {
   return dia <= ultimoDiaDoMes;
 }
 
+// Apresentação: 'aaaa-mm-dd' → 'dd/mm/aaaa'.
+export function formatarDataBr(data: string): string {
+  const [ano, mes, dia] = data.split('-');
+  return `${dia}/${mes}/${ano}`;
+}
+
 // Data de hoje no fuso do navegador, sem passar por toISOString (que usa UTC).
 export function dataDeHoje(): string {
   const agora = new Date();

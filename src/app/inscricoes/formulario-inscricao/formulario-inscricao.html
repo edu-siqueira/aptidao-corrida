@@ -1,0 +1,68 @@
+@if (modoEdicao() && !inscricaoEditada()) {
+  <app-inscricao-nao-encontrada [email]="email() ?? ''" />
+} @else {
+  <h1>{{ modoEdicao() ? 'Editar inscrição' : 'Nova inscrição' }}</h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
+    <div class="campo">
+      <label for="nomeCompleto">Nome completo</label>
+      <input
+        id="nomeCompleto"
+        formControlName="nomeCompleto"
+        autocomplete="name"
+        [attr.aria-invalid]="!!erros().nomeCompleto"
+        aria-describedby="erro-nomeCompleto"
+      />
+      @if (erros().nomeCompleto; as erro) {
+        <p class="erro" id="erro-nomeCompleto">{{ erro }}</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        autocomplete="email"
+        [attr.aria-invalid]="!!erros().email"
+        aria-describedby="erro-email dica-email"
+      />
+      @if (modoEdicao()) {
+        <p class="dica" id="dica-email">O e-mail identifica a inscrição e não pode ser alterado.</p>
+      }
+      @if (erros().email; as erro) {
+        <p class="erro" id="erro-email">{{ erro }}</p>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="nascimento">Data de nascimento</label>
+      <input
+        id="nascimento"
+        type="date"
+        formControlName="nascimento"
+        [max]="hoje"
+        [attr.aria-invalid]="!!erros().nascimento"
+        aria-describedby="erro-nascimento"
+      />
+      @if (erros().nascimento; as erro) {
+        <p class="erro" id="erro-nascimento">{{ erro }}</p>
+      }
+    </div>
+
+    <fieldset class="campo" [attr.aria-invalid]="!!erros().distancia" aria-describedby="erro-distancia">
+      <legend>Percurso</legend>
+      <label><input type="radio" formControlName="distancia" value="KM_5" /> 5 km</label>
+      <label><input type="radio" formControlName="distancia" value="KM_10" /> 10 km</label>
+      @if (erros().distancia; as erro) {
+        <p class="erro" id="erro-distancia">{{ erro }}</p>
+      }
+    </fieldset>
+
+    <div class="acoes">
+      <button type="submit">{{ modoEdicao() ? 'Salvar alterações' : 'Inscrever' }}</button>
+      <a routerLink="/inscricoes">Voltar</a>
+    </div>
+  </form>
+}

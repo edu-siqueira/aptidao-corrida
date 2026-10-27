@@ -1,0 +1,18 @@
+<div class="topo">
+  <h1>Inscrições</h1>
+  <a routerLink="/inscricoes/nova">Nova inscrição</a>
+</div>
+
+@for (inscricao of store.inscricoes(); track inscricao.email) {
+  <article class="card">
+    <h2>{{ inscricao.nomeCompleto }}</h2>
+    <app-ficha-inscricao [inscricao]="inscricao" />
+    <div class="acoes">
+      <a [routerLink]="['/inscricoes', inscricao.email]">Detalhes</a>
+      <a [routerLink]="['/inscricoes', inscricao.email, 'editar']">Editar</a>
+      <button type="button" (click)="cancelar(inscricao)">Cancelar inscrição</button>
+    </div>
+  </article>
+} @empty {
+  <p class="vazio">Nenhuma inscrição até o momento.</p>
+}
