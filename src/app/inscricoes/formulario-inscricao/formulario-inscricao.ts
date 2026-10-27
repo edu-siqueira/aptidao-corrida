@@ -13,6 +13,7 @@ import { InscricoesStore, ResultadoOperacao } from '../inscricoes.store';
   selector: 'app-formulario-inscricao',
   imports: [ReactiveFormsModule, RouterLink, InscricaoNaoEncontrada],
   templateUrl: './formulario-inscricao.html',
+  styleUrl: './formulario-inscricao.css',
 })
 export class FormularioInscricao {
   private readonly store = inject(InscricoesStore);

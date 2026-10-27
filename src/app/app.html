@@ -1,31 +1,35 @@
 <header class="cabecalho">
-  <div>
-    <a class="evento" routerLink="/inscricoes">{{ evento.nome }}</a>
-    <p class="data">
-      {{ evento.dataProva | dataBr }} · {{ evento.local }} · largada às {{ evento.largada }}
-    </p>
-  </div>
+  <div class="cabecalho__conteudo">
+    <div>
+      <a class="evento" routerLink="/inscricoes">{{ evento.nome }}</a>
+      <p class="data">
+        {{ evento.dataProva | dataBr }} · {{ evento.local }} · largada às {{ evento.largada }}
+      </p>
+    </div>
 
-  <dl class="resumo" aria-label="Resumo das inscrições">
-    <div>
-      <dt>Total</dt>
-      <dd>{{ store.resumo().total }}</dd>
-    </div>
-    <div>
-      <dt>5 km</dt>
-      <dd>{{ store.resumo().km5 }}</dd>
-    </div>
-    <div>
-      <dt>10 km</dt>
-      <dd>{{ store.resumo().km10 }}</dd>
-    </div>
-  </dl>
+    <dl class="resumo" aria-label="Resumo das inscrições">
+      <div>
+        <dt>Total</dt>
+        <dd>{{ store.resumo().total }}</dd>
+      </div>
+      <div>
+        <dt>5 km</dt>
+        <dd>{{ store.resumo().km5 }}</dd>
+      </div>
+      <div>
+        <dt>10 km</dt>
+        <dd>{{ store.resumo().km10 }}</dd>
+      </div>
+    </dl>
+  </div>
 </header>
 
 @if (store.aviso(); as aviso) {
   <div class="aviso" role="alert">
     <span>{{ aviso }}</span>
-    <button type="button" (click)="store.descartarAviso()">Fechar</button>
+    <button type="button" class="botao botao--secundario" (click)="store.descartarAviso()">
+      Fechar
+    </button>
   </div>
 }
 

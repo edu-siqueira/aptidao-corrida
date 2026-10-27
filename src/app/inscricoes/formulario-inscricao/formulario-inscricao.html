@@ -1,9 +1,9 @@
 @if (modoEdicao() && !inscricaoEditada()) {
   <app-inscricao-nao-encontrada [email]="email() ?? ''" />
 } @else {
-  <h1>{{ modoEdicao() ? 'Editar inscrição' : 'Nova inscrição' }}</h1>
+  <form class="card formulario" [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
+    <h1>{{ modoEdicao() ? 'Editar inscrição' : 'Nova inscrição' }}</h1>
 
-  <form [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
     <div class="campo">
       <label for="nomeCompleto">Nome completo</label>
       <input
@@ -53,16 +53,26 @@
 
     <fieldset class="campo" [attr.aria-invalid]="!!erros().distancia" aria-describedby="erro-distancia">
       <legend>Percurso</legend>
-      <label><input type="radio" formControlName="distancia" value="KM_5" /> 5 km</label>
-      <label><input type="radio" formControlName="distancia" value="KM_10" /> 10 km</label>
+      <div class="opcoes">
+        <label class="opcao">
+          <input type="radio" formControlName="distancia" value="KM_5" />
+          5 km
+        </label>
+        <label class="opcao">
+          <input type="radio" formControlName="distancia" value="KM_10" />
+          10 km
+        </label>
+      </div>
       @if (erros().distancia; as erro) {
         <p class="erro" id="erro-distancia">{{ erro }}</p>
       }
     </fieldset>
 
     <div class="acoes">
-      <button type="submit">{{ modoEdicao() ? 'Salvar alterações' : 'Inscrever' }}</button>
-      <a routerLink="/inscricoes">Voltar</a>
+      <button type="submit" class="botao">
+        {{ modoEdicao() ? 'Salvar alterações' : 'Inscrever' }}
+      </button>
+      <a class="botao botao--secundario" routerLink="/inscricoes">Voltar</a>
     </div>
   </form>
 }

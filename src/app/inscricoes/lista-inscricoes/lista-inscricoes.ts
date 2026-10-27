@@ -9,6 +9,7 @@ import { InscricoesStore } from '../inscricoes.store';
   selector: 'app-lista-inscricoes',
   imports: [RouterLink, FichaInscricao],
   templateUrl: './lista-inscricoes.html',
+  styleUrl: './lista-inscricoes.css',
 })
 export class ListaInscricoes {
   protected readonly store = inject(InscricoesStore);

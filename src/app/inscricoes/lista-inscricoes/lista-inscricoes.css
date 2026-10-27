@@ -1,0 +1,24 @@
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: var(--espaco);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+  gap: var(--espaco);
+}
+
+.vazio {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: calc(var(--espaco) * 2);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+  text-align: center;
+}

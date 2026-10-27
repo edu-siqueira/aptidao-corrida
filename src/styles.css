@@ -1,1 +1,155 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos compartilhados entre as telas. */
+:root {
+  --cor-fundo: #f4f6f9;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1d2433;
+  --cor-texto-suave: #5b6476;
+  --cor-borda: #d9dee7;
+  --cor-primaria: #1f5fbf;
+  --cor-primaria-escura: #174a96;
+  --cor-perigo: #b42318;
+  --cor-perigo-fundo: #fdecea;
+  --cor-aviso-fundo: #fff4d6;
+  --cor-aviso-borda: #e7b416;
+  --raio: 10px;
+  --espaco: 16px;
+
+  color-scheme: light;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--cor-texto);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: calc(var(--espaco) * 1.5) var(--espaco) calc(var(--espaco) * 3);
+}
+
+/* Botões e links com aparência de botão */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 var(--espaco);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 8px;
+  background: var(--cor-primaria);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background: var(--cor-primaria-escura);
+}
+
+.botao--secundario {
+  background: transparent;
+  color: var(--cor-primaria);
+}
+
+.botao--secundario:hover {
+  background: #e8f0fb;
+}
+
+.botao--perigo {
+  border-color: var(--cor-perigo);
+  background: transparent;
+  color: var(--cor-perigo);
+}
+
+.botao--perigo:hover {
+  background: var(--cor-perigo-fundo);
+}
+
+.botao:focus-visible,
+input:focus-visible {
+  outline: 3px solid #9cc0f5;
+  outline-offset: 2px;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Cards */
+.card {
+  display: grid;
+  gap: var(--espaco);
+  padding: calc(var(--espaco) * 1.25);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  min-width: 0;
+}
+
+/* Ficha com os campos de uma inscrição */
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px var(--espaco);
+  margin: 0;
+}
+
+.ficha dt {
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+}
+
+.ficha dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.ficha .ficha__email {
+  grid-column: 1 / -1;
+}
+
+/* Páginas de "não encontrado" */
+.nao-encontrada {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: calc(var(--espaco) * 2);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+.nao-encontrada p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

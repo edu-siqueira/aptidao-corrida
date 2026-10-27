@@ -3,9 +3,9 @@
     <h1>{{ inscricao.nomeCompleto }}</h1>
     <app-ficha-inscricao [inscricao]="inscricao" />
     <div class="acoes">
-      <a routerLink="/inscricoes">Voltar para a lista</a>
-      <a [routerLink]="['/inscricoes', inscricao.email, 'editar']">Editar</a>
-      <button type="button" (click)="cancelar()">Cancelar inscrição</button>
+      <a class="botao botao--secundario" routerLink="/inscricoes">Voltar para a lista</a>
+      <a class="botao" [routerLink]="['/inscricoes', inscricao.email, 'editar']">Editar</a>
+      <button type="button" class="botao botao--perigo" (click)="cancelar()">Cancelar inscrição</button>
     </div>
   </article>
 } @else {
