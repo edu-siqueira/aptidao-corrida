@@ -7,7 +7,7 @@ export function isDataValida(texto: string): boolean {
   const partes = PADRAO_DATA_ISO.exec(texto);
   if (!partes) return false;
 
-  const [ano, mes, dia] = partes.map(Number);
+  const [, ano, mes, dia] = partes.map(Number);
   if (mes < 1 || mes > 12 || dia < 1) return false;
 
   // Dia 0 do mês seguinte é o último dia do mês informado.

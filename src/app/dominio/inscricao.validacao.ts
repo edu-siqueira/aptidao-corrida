@@ -1,5 +1,5 @@
 // Validação usada tanto no cadastro quanto na edição. Sem dependência do Angular.
-import { ehDataValida } from './datas';
+import { isDataValida } from './datas';
 import { DadosInscricao, Inscricao, InscricaoDetalhada } from './inscricao';
 import {
   Distancia,
@@ -55,7 +55,7 @@ function validarEmail(email: string): string | null {
 
 function validarNascimento(nascimento: string, hoje: string): string | null {
   if (!nascimento) return 'Informe a data de nascimento.';
-  if (!ehDataValida(nascimento)) return 'Informe uma data válida.';
+  if (!isDataValida(nascimento)) return 'Informe uma data válida.';
   if (nascimento >= hoje) return 'A data de nascimento deve ser anterior a hoje.';
   return null;
 }
