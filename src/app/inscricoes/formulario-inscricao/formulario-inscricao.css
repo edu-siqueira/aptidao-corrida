@@ -59,9 +59,13 @@ fieldset[aria-invalid='true'] .opcao {
   cursor: pointer;
 }
 
+.opcao input {
+  accent-color: var(--cor-primaria);
+}
+
 .opcao:has(input:checked) {
   border-color: var(--cor-primaria);
-  background: #e8f0fb;
+  background: var(--cor-primaria-fundo);
 }
 
 .erro,

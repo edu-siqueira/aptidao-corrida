@@ -1,6 +1,8 @@
 <div class="topo">
   <h1>Inscrições</h1>
-  <a class="botao" routerLink="/inscricoes/nova">Nova inscrição</a>
+  <a class="botao" routerLink="/inscricoes/nova">
+    Nova inscrição <i class="pi pi-plus" aria-hidden="true"></i>
+  </a>
 </div>
 
 <div class="cards">
@@ -9,12 +11,14 @@
       <h2>{{ inscricao.nomeCompleto }}</h2>
       <app-ficha-inscricao [inscricao]="inscricao" />
       <div class="acoes">
-        <a class="botao botao--secundario" [routerLink]="['/inscricoes', inscricao.email]">Detalhes</a>
+        <a class="botao botao--secundario" [routerLink]="['/inscricoes', inscricao.email]">
+          Detalhes <i class="pi pi-file" aria-hidden="true"></i>
+        </a>
         <a class="botao botao--secundario" [routerLink]="['/inscricoes', inscricao.email, 'editar']">
-          Editar
+          Editar <i class="pi pi-pencil" aria-hidden="true"></i>
         </a>
         <button type="button" class="botao botao--perigo" (click)="cancelar(inscricao)">
-          Cancelar inscrição
+          Cancelar inscrição <i class="pi pi-trash" aria-hidden="true"></i>
         </button>
       </div>
     </article>
@@ -22,3 +26,5 @@
     <p class="vazio">Nenhuma inscrição até o momento.</p>
   }
 </div>
+
+<p-confirmDialog icon="pi pi-exclamation-triangle" styleClass="dialogo-confirmacao" />

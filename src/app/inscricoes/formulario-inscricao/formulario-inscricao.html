@@ -51,7 +51,11 @@
       }
     </div>
 
-    <fieldset class="campo" [attr.aria-invalid]="!!erros().distancia" aria-describedby="erro-distancia">
+    <fieldset
+      class="campo"
+      [attr.aria-invalid]="!!erros().distancia"
+      aria-describedby="erro-distancia"
+    >
       <legend>Percurso</legend>
       <div class="opcoes">
         <label class="opcao">
@@ -70,9 +74,15 @@
 
     <div class="acoes">
       <button type="submit" class="botao">
-        {{ modoEdicao() ? 'Salvar alterações' : 'Inscrever' }}
+        @if (modoEdicao()) {
+          Salvar alterações <i class="pi pi-save" aria-hidden="true"></i>
+        } @else {
+          Inscrever <i class="pi pi-plus" aria-hidden="true"></i>
+        }
       </button>
-      <a class="botao botao--secundario" routerLink="/inscricoes">Voltar</a>
+      <a class="botao botao--secundario" routerLink="/inscricoes">
+        Voltar <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      </a>
     </div>
   </form>
 }

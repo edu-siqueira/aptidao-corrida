@@ -1,18 +1,24 @@
+@import "primeicons/primeicons.css";
+
 /* Estilos compartilhados entre as telas. */
 :root {
   --cor-fundo: #f4f6f9;
   --cor-superficie: #ffffff;
   --cor-texto: #1d2433;
   --cor-texto-suave: #5b6476;
+  --cor-texto-sobre-cor: #ffffff;
   --cor-borda: #d9dee7;
-  --cor-primaria: #1f5fbf;
-  --cor-primaria-escura: #174a96;
+  /* Verdes escuros o bastante para texto branco por cima (5,4:1 e 7,6:1). */
+  --cor-primaria: #18794f;
+  --cor-primaria-escura: #12603e;
+  --cor-primaria-fundo: #e6f6ee;
   --cor-perigo: #b42318;
   --cor-perigo-fundo: #fdecea;
   --cor-aviso-fundo: #fff4d6;
   --cor-aviso-borda: #e7b416;
   --raio: 10px;
   --espaco: 16px;
+  --sombra: 0 12px 32px rgba(29, 36, 51, 0.18);
 
   color-scheme: light;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -59,27 +65,41 @@ main {
   justify-content: center;
   min-height: 40px;
   padding: 0 var(--espaco);
+  gap: 4px;
   border: 1px solid var(--cor-primaria);
   border-radius: 8px;
   background: var(--cor-primaria);
-  color: #fff;
+  color: var(--cor-texto-sobre-cor);
   font: inherit;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.botao .pi {
+  font-size: 1rem;
 }
 
 .botao:hover {
+  border-color: var(--cor-primaria-escura);
   background: var(--cor-primaria-escura);
+  color: var(--cor-texto-sobre-cor);
 }
 
 .botao--secundario {
+  border-color: var(--cor-primaria);
   background: transparent;
   color: var(--cor-primaria);
 }
 
 .botao--secundario:hover {
-  background: #e8f0fb;
+  border-color: var(--cor-primaria);
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
 }
 
 .botao--perigo {
@@ -89,12 +109,14 @@ main {
 }
 
 .botao--perigo:hover {
-  background: var(--cor-perigo-fundo);
+  border-color: var(--cor-perigo);
+  background: var(--cor-perigo);
+  color: var(--cor-texto-sobre-cor);
 }
 
 .botao:focus-visible,
 input:focus-visible {
-  outline: 3px solid #9cc0f5;
+  outline: 3px solid var(--cor-primaria);
   outline-offset: 2px;
 }
 
@@ -124,8 +146,9 @@ input:focus-visible {
 }
 
 .ficha dt {
-  color: var(--cor-texto-suave);
+  color: var(--cor-texto);
   font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .ficha dd {
@@ -152,4 +175,24 @@ input:focus-visible {
 .nao-encontrada p {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.p-dialog.dialogo-confirmacao {
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+/* O vermelho do tema tem contraste baixo com o texto branco; usa o da paleta. */
+.p-dialog.dialogo-confirmacao .p-confirmdialog-accept-button {
+  border-color: var(--cor-perigo);
+  background: var(--cor-perigo);
+}
+
+.p-dialog.dialogo-confirmacao .p-confirmdialog-icon {
+  font-size: 2rem;
+  color: var(--cor-perigo);
 }
