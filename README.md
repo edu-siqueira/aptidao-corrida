@@ -1,60 +1,17 @@
-# AptidaoCorrida
+# Inscrições · 5ª Corrida Solidária da Vila Esperança
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+> Rascunho: as demais seções serão preenchidas seguindo o modelo de README fornecido.
 
-## Development server
+## Conflitos e decisões
 
-To start a local development server, run:
+### Protótipo de interface × enunciado
 
-```bash
-ng serve
-```
+O protótipo (https://prototipo-corrida.vercel.app/) é referência de interface e navegação. Onde ele diverge do enunciado, foi seguido o enunciado.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# aptidao-corrida
+| Ponto | Protótipo | Decisão | Motivo |
+|---|---|---|---|
+| Rotas | Usa `#` na URL (`#/inscricoes/...`) | Angular Router com caminhos reais (`/inscricoes/...`) | O enunciado exige o Angular Router e URLs que funcionem coladas na barra e após recarregar |
+| Página não encontrada | Mostra a mensagem e a lista de inscrições abaixo | Mostra a mensagem e um botão para voltar à lista | O enunciado pede "página não encontrada com retorno à lista" |
+| Cancelamento | Remove a inscrição na hora, sem confirmação | Pede confirmação antes de cancelar | O cancelamento remove dados de forma irreversível; a confirmação evita cliques acidentais |
+| Formulário | Modal sobre a lista, percurso em `select` | Página própria, percurso em botões de opção | O enunciado permite página ou modal; a página é mais simples de usar no celular e mostra as duas opções de percurso de uma vez |
+| Visual | Cabeçalho branco, badges coloridos por categoria, primária `#2B50D8` | Cabeçalho azul com o resumo, ficha com rótulo e valor, primária `#1f5fbf` | Nenhum documento define cores; o enunciado diz que fidelidade visual não substitui funcionamento |
