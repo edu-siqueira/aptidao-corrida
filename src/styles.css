@@ -110,8 +110,8 @@ main {
 
 .botao--perigo:hover {
   border-color: var(--cor-perigo);
-  background: var(--cor-perigo);
-  color: var(--cor-texto-sobre-cor);
+  background: var(--cor-perigo-fundo);
+  color: var(--cor-perigo);
 }
 
 .botao:focus-visible,
@@ -195,4 +195,16 @@ input:focus-visible {
 .p-dialog.dialogo-confirmacao .p-confirmdialog-icon {
   font-size: 2rem;
   color: var(--cor-perigo);
+}
+
+.p-dialog.dialogo-formulario {
+  width: calc(100% - 2 * var(--espaco));
+  max-width: 560px;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+.p-dialog.dialogo-formulario .p-dialog-title {
+  font-size: 1.5rem;
+  font-weight: 700;
 }

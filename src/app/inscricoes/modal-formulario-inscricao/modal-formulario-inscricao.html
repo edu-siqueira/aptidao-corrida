@@ -1,0 +1,13 @@
+<p-dialog
+  [header]="titulo()"
+  [visible]="true"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closeOnEscape]="false"
+  closeAriaLabel="Fechar"
+  styleClass="dialogo-formulario"
+  (onHide)="fechar()"
+>
+  <app-formulario-inscricao [email]="email()" />
+</p-dialog>

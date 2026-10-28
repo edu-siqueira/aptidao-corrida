@@ -1,4 +1,6 @@
 .formulario {
+  display: grid;
+  gap: var(--espaco);
   max-width: 560px;
   margin: 0 auto;
 }

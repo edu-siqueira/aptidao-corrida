@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
@@ -11,7 +11,7 @@ import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-lista-inscricoes',
-  imports: [RouterLink, FichaInscricao, ConfirmDialogModule],
+  imports: [RouterLink, RouterOutlet, FichaInscricao, ConfirmDialogModule],
   providers: [ConfirmationService],
   templateUrl: './lista-inscricoes.html',
   styleUrl: './lista-inscricoes.css',

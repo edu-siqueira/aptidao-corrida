@@ -3,9 +3,15 @@
     <h1>{{ inscricao.nomeCompleto }}</h1>
     <app-ficha-inscricao [inscricao]="inscricao" />
     <div class="acoes">
-      <a class="botao botao--secundario" routerLink="/inscricoes">Voltar para a lista</a>
-      <a class="botao" [routerLink]="['/inscricoes', inscricao.email, 'editar']">Editar</a>
-      <button type="button" class="botao botao--perigo" (click)="cancelar()">Cancelar inscrição</button>
+      <a class="botao botao--secundario" routerLink="/inscricoes">
+        Voltar para a lista <i class="pi pi-arrow-left" aria-hidden="true"></i>
+      </a>
+      <a class="botao" [routerLink]="['/inscricoes', inscricao.email, 'editar']">
+        Editar <i class="pi pi-pencil" aria-hidden="true"></i>
+      </a>
+      <button type="button" class="botao botao--perigo" (click)="cancelar()">
+        Cancelar inscrição <i class="pi pi-trash" aria-hidden="true"></i>
+      </button>
     </div>
   </article>
 } @else {

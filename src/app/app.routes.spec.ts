@@ -36,9 +36,32 @@ describe('rotas', () => {
     expect(texto()).toContain('Ana Souza');
   });
 
-  it('abre /inscricoes/nova como cadastro', async () => {
+  it('abre /inscricoes/nova como modal sobre a lista', async () => {
     await harness.navigateByUrl('/inscricoes/nova');
-    expect(texto()).toContain('Nova inscrição');
+    expect(document.querySelector('.dialogo-formulario #nomeCompleto')).not.toBeNull();
+    expect(texto()).toContain('Ana Souza');
+  });
+
+  it('fecha o modal e volta para a lista após cadastrar', async () => {
+    await harness.navigateByUrl('/inscricoes/nova');
+    const campo = (seletor: string) => document.querySelector<HTMLInputElement>(seletor)!;
+    for (const [seletor, valor] of [
+      ['#nomeCompleto', 'Bruno Lima'],
+      ['#email', 'bruno@email.com'],
+      ['#nascimento', '1985-01-10'],
+    ]) {
+      campo(seletor).value = valor;
+      campo(seletor).dispatchEvent(new Event('input'));
+    }
+    campo('input[value="KM_5"]').click();
+    document.querySelector<HTMLFormElement>('.dialogo-formulario form')!
+      .dispatchEvent(new Event('submit'));
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+
+    expect(router.url).toBe('/inscricoes');
+    expect(document.querySelector('.dialogo-formulario')).toBeNull();
+    expect(texto()).toContain('Bruno Lima');
   });
 
   it('abre os detalhes com + e @ digitados direto na URL', async () => {
@@ -54,11 +77,10 @@ describe('rotas', () => {
     expect(texto()).toContain('Ana Souza');
   });
 
-  it('abre a edição com os dados preenchidos e o e-mail bloqueado', async () => {
+  it('abre a edição em modal com os dados preenchidos e o e-mail bloqueado', async () => {
     await harness.navigateByUrl(`/inscricoes/${EMAIL_COM_MAIS}/editar`);
-    const pagina = harness.routeNativeElement as HTMLElement;
-    const nome = pagina.querySelector<HTMLInputElement>('#nomeCompleto');
-    const email = pagina.querySelector<HTMLInputElement>('#email');
+    const nome = document.querySelector<HTMLInputElement>('.dialogo-formulario #nomeCompleto');
+    const email = document.querySelector<HTMLInputElement>('.dialogo-formulario #email');
 
     expect(nome?.value).toBe('Ana Souza');
     expect(email?.value).toBe(EMAIL_COM_MAIS);
@@ -70,7 +92,9 @@ describe('rotas', () => {
     expect(texto()).toContain('Inscrição não encontrada');
 
     await harness.navigateByUrl('/inscricoes/ninguem@email.com/editar');
-    expect(texto()).toContain('Inscrição não encontrada');
+    expect(document.querySelector('.dialogo-formulario')?.textContent).toContain(
+      'Inscrição não encontrada',
+    );
   });
 
   it('mostra página não encontrada para caminhos desconhecidos', async () => {

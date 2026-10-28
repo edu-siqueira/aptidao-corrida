@@ -7,7 +7,7 @@ import { ErrosInscricao } from '../../dominio/inscricao.validacao';
 import { InscricaoNaoEncontrada } from '../inscricao-nao-encontrada/inscricao-nao-encontrada';
 import { InscricoesStore, ResultadoOperacao } from '../inscricoes.store';
 
-// Atende /inscricoes/nova (sem e-mail) e /inscricoes/:email/editar (com e-mail).
+// Atende /inscricoes/nova (sem e-mail) e /inscricoes/:email/editar (com e-mail), sempre dentro do modal.
 // As regras ficam na store e no domínio; aqui só exibimos os erros devolvidos.
 @Component({
   selector: 'app-formulario-inscricao',
