@@ -4,33 +4,59 @@ Front-end em Angular para as inscrições da 5ª Corrida Solidária da Vila Espe
 
 ## Como rodar
 
-**Versões**
+### Pré-requisitos
 
-- **Node 22.12 ou mais recente.** O Angular 21 aceita `^20.19`, `^22.12` ou `>=24`. O projeto foi desenvolvido com Node 24.22.1.
-- **npm 10 ou mais recente.** O npm 10 é o que vem com o Node 22.
-- Angular 21.2 com componentes standalone.
-- Testes com Vitest, executados pelo `ng test`.
+| Ferramenta | Versão | Como conferir |
+| --- | --- | --- |
+| Node.js | 22.12 ou mais recente (o Angular 21 aceita `^20.19`, `^22.12` ou `>=24`) | `node -v` deve mostrar `v22.12.0` ou mais |
+| npm | 10 ou mais recente (já vem com o Node) | `npm -v` deve mostrar `10.x` ou mais |
 
-**Instalação e execução**
+Não é preciso instalar o Angular CLI globalmente: ele vem como dependência do projeto e é usado pelos scripts do npm.
 
-```bash
-npm ci
-npm start
-```
+O projeto foi desenvolvido com Node 24.22.1, Angular 21.2 (componentes standalone) e Vitest, executado pelo `ng test`.
 
-Depois, abra http://localhost:4200. O `npm ci` instala exatamente as versões do `package-lock.json`.
+### Passo a passo
 
-**Testes e build**
+1. **Obtenha o código e entre na pasta.** Clone o repositório ou descompacte o arquivo entregue:
 
-```bash
-npm test -- --watch=false
-npm run build
-```
+   ```bash
+   cd aptidao-corrida
+   ```
 
-- O primeiro comando roda os testes uma vez e encerra. Sem `--watch=false`, ele fica observando os arquivos.
-- O build vai para `dist/aptidao-corrida`. Ele mostra um aviso de orçamento de tamanho, explicado em [Dependência de interface](#dependência-de-interface).
+2. **Instale as dependências.** O `npm ci` instala exatamente as versões do `package-lock.json` e leva cerca de um minuto:
 
-As inscrições ficam no `localStorage` do navegador, na chave `corrida.inscricoes.v1`. Para recomeçar do zero, apague essa chave nas ferramentas do desenvolvedor.
+   ```bash
+   npm ci
+   ```
+
+   Ao final, aparece `added ... packages`.
+
+3. **Inicie a aplicação:**
+
+   ```bash
+   npm start
+   ```
+
+   Quando o terminal mostrar `Local: http://localhost:4200/`, a aplicação está pronta. O servidor continua rodando até você apertar `Ctrl+C`.
+
+4. **Abra http://localhost:4200 no navegador.** Você será levado para `/inscricoes`, com a lista vazia ("Nenhuma inscrição até o momento") e o resumo do cabeçalho zerado. Clique em **Nova inscrição** para cadastrar.
+
+### Outros comandos
+
+Rode em outro terminal, também dentro da pasta do projeto.
+
+| Comando | Para que serve | Resultado esperado |
+| --- | --- | --- |
+| `npm test -- --watch=false` | Roda todos os testes uma vez e encerra | `Tests 56 passed` |
+| `npm test` | Roda os testes e fica observando os arquivos | Reexecuta os testes a cada alteração |
+| `npm run build` | Gera a versão de produção em `dist/aptidao-corrida` | `Application bundle generation complete`, com um aviso de orçamento (veja abaixo) |
+
+### Problemas comuns
+
+- **A porta 4200 está ocupada.** Use outra porta com `npm start -- --port 4300` e abra http://localhost:4300.
+- **Erro de versão do Node** (`EBADENGINE` ou "The Angular CLI requires a minimum Node.js version"). Atualize o Node para 22.12 ou mais recente e rode `npm ci` de novo.
+- **Aviso "bundle initial exceeded maximum budget" no build.** É esperado e não impede o build. A explicação está em [Dependência de interface](#dependência-de-interface).
+- **Recomeçar com a lista vazia.** As inscrições ficam no `localStorage` do navegador, na chave `corrida.inscricoes.v1`. Apague essa chave em Ferramentas do desenvolvedor → Application → Local Storage e recarregue a página.
 
 ## Entendimento do problema
 
